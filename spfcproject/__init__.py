@@ -8,8 +8,8 @@ import sqlalchemy
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '76de173de227420f653cf3c10a713543'
-if os.getenv('DATABASE_PUBLIC_URL'):
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_PUBLIC_URL')
+if os.getenv('DATABASE_URL'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projetospfc.db'
 
