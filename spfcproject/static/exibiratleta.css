@@ -1,0 +1,62 @@
+*   {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .content-table  {
+
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: black;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td   {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr   {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even)   {
+            background-color: #d6d6d6;
+        }
+
+        .content-table tbody tr:last-of-type    {
+            border-bottom: 2px solid black;
+        }
+
+        .btn-editar {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        }
+
+        .btn-editar:hover {
+            background-color: #0056b3;
+        }
+
+            .btn-excluir {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        }
+
+        .btn-excluir:hover {
+            background-color: #a71d2a;
+        }

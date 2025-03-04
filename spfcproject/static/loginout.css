@@ -1,0 +1,72 @@
+body {
+    background-image: url('/static/fotos_gerais/fundo.jpg'); /* Caminho para a imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    height: 100vh; /* Garante que ocupe toda a tela */
+}
+
+.input-group .form-control {
+    border-right: none;
+    border-radius: 40px 0 0 40px;
+    padding-left: 20px;
+}
+
+.input-group .input-group-text  {
+    font-size: 25px;
+    color: gray;
+    border-radius: 0 40px 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para a borda vermelha do input e do ícone */
+.input-group:focus-within .form-control {
+    border-color: #a70e21 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 0.05rem rgba(167, 14, 33, 0.5) !important;
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: #a70e21 !important; /* Borda vermelha no ícone */
+    box-shadow: 0 0 0 0.05rem rgba(167, 14, 33, 0.5) !important; /* Sombra vermelha no ícone */
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+.btn-custom {
+    background-color: #580000; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    border-radius: 10px; /* Arredonda os cantos */
+    font-size: 16px; /* Define o tamanho da fonte */
+    font-weight: bold; /* Deixa o texto mais forte */
+    cursor: pointer; /* Transforma o cursor em uma mãozinha ao passar por cima */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+    background-color: #930b19; /* Cor mais clara ao passar o mouse */
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilizando o placeholder dos inputs */
+input::placeholder {
+    color: #a70e21; /* Cor do placeholder */
+    font-style: italic; /* Deixa o texto em itálico */
+    opacity: 0.7; /* Deixa o texto mais suave */
+    font-size: 16px; /* Tamanho da fonte */
+    padding-left: 10px; /* Alinha o texto um pouco para a esquerda */
+}
+
+input:focus::placeholder {
+    color: #930b19; /* Cor do placeholder quando o campo está em foco */
+    opacity: 1; /* Aumenta a visibilidade ao focar */
+}

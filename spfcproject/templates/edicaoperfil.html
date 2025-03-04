@@ -1,0 +1,29 @@
+{% extends 'perfil.html' %}
+
+{% block edicao_perfil %}
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="w-50 p-4 shadow rounded bg-light container-fluid">  <!-- Define a largura máxima dos inputs e adiciona estilo -->
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form_editar_perfil.csrf_token }}
+            <fieldset>
+
+                <div class="form-group">
+                    {{ form_editar_perfil.foto_usuario(class="form-control-file") }}
+                    {% if form_editar_perfil.foto_usuario.errors %}
+                        {% for erro in form_editar_perfil.foto_usuario.errors %}
+                           <span class="text-danger">{{ erro }}</span><br>
+                         {% endfor %}
+                    {% endif %}
+                </div>
+
+            </fieldset>
+            <div class="text-center mt-3">
+                {{ form_editar_perfil.botao_adicionar_foto_usuario(class="btn btn-primary w-75") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

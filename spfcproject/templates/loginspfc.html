@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{{ url_for('static', filename='loginout.css') }}">
+{% endblock %}
+
+{% block body %}
+<body>
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="w-50 p-4 shadow bg-light" style="border-radius: 35px">  <!-- Define a largura máxima dos inputs e adiciona estilo -->
+        <div class="d-flex align-items-center justify-content-center gap-2">
+            <img src="{{ url_for('static', filename='fotos_gerais/madecotia.jpg') }}" alt="Logo" class="logo">
+            <h1 class="m-0">ENTRE EM SUA CONTA</h1>
+        </div>
+        <div style="width: 100%; height: 3px; background-color: #6c0408;" class="mb-3"></div>
+
+
+
+        <form method="POST" action="">
+            {{ form_loginspfc.csrf_token }}
+            <fieldset>
+
+                <div class="form-group">
+                    {% if form_loginspfc.email.errors %}
+                        {{ form_loginspfc.email(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for erro in form_loginspfc.email.errors %}
+                            {{ erro }}
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="input-group mb-5 mt-4">
+                           {{ form_loginspfc.email(class="form-control", placeholder="email@saopaulofc.net") }}
+                            <span class="input-group-text"><i class='bx bxs-user'></i></span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {% if form_loginspfc.senha.errors %}
+                        {{ form_loginspfc.senha(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for erro in form_loginspfc.senha.errors %}
+                                {{ erro }}
+                             {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="input-group mb-3">
+                            {{ form_loginspfc.senha(class="form-control", placeholder="senha") }}
+                            <span class="input-group-text"><i class='bx bxs-lock-alt'></i></span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group form-check">
+                    {{ form_loginspfc.lembrar_dados(class="form-check-input") }}
+                    {{ form_loginspfc.lembrar_dados.label(class="form-check-label ms-2") }}
+                </div>
+
+            </fieldset>
+            <div class="text-center mt-3 d-flex gap-2">
+                {{ form_loginspfc.botao_submit_login(class="btn btn-custom w-50") }}
+                <a href="{{ url_for('cadastrospfc') }}" class="btn btn-custom w-50">Criar Conta</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+{% endblock %}

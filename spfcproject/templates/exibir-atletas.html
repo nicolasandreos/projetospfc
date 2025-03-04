@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='exibiratleta.css') }}">
+{% endblock %}
+
+{% block body %}
+    <body>
+        {% if atleta_existe %}
+            <div class="container mt-5 d-flex justify-content-center">
+                <div class="table-responsive">
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>Nome Completo</th>
+                                <th>Data de Nascimento</th>
+                                <th>CPF</th>
+                                <th>Email</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for atleta in lista_atletas %}
+                            <tr>
+                                <td>{{ atleta.nome_completo.title() }}</td>
+                                <td>{{ atleta.data_nascimento[8:10] }}/{{ atleta.data_nascimento[5:7] }}/{{ atleta.data_nascimento[:4] }}</td>
+                                <td>{{ atleta.cpf[:3] }}.{{ atleta.cpf[3:6] }}.{{ atleta.cpf[6:9] }}-{{ atleta.cpf[9:] }}</td>
+                                <td>{{ atleta.email }}</td>
+                                <td>
+                                    <a href="{{ url_for('edicao_atleta', id=atleta.id) }}" class="btn btn-editar btn-sm">
+                                        Alterar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-excluir btn-sm" data-bs-toggle="modal" data-bs-target="#confirmacaoExclusao-{{ atleta.id }}">
+                                        Excluir
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- Modal de Confirmação para cada atleta -->
+                            <div class="modal fade" id="confirmacaoExclusao-{{ atleta.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ atleta.id }}" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="modalLabel-{{ atleta.id }}">Confirmar Exclusão</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Você quer realmente excluir {{ atleta.nome_completo }}? Essa ação não pode ser desfeita.
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <form method="POST" action="{{ url_for('excluir_atleta', id=atleta.id) }}">
+                                        <button type="submit" class="btn btn-excluir">Excluir</button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% else %}
+            <div class="container mt-5 text-center">
+                <h3>Nenhum atleta cadastrado no momento.</h3>
+            </div>
+        {% endif %}
+    </body>
+{% endblock %}

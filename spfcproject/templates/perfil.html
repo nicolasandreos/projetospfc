@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card p-3">
+            <div class="d-flex align-items-center">
+                <div class="image pe-2"> <img src="{{ foto_perfil }}" class="rounded" width="200"> </div>
+                <div class="ml-3 w-100">
+                    <h4 class="mb-1 mt-0">{{ current_user.username.title() }}</h4> <span>{{ current_user.email }}</span>
+                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                        <div class="d-flex flex-column"> {{ current_user.atletas_cadastrados }} atleta(s) cadastrado(s) </div>
+                    </div>
+                    <div class="button mt-2 d-flex flex-row align-items-center"> <a class="w-100" href="{{ url_for('edicao_perfil') }}"><button class="btn btn-sm btn-outline-primary w-100">Adicionar Foto</button></div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% block edicao_perfil %}
+
+{% endblock %}
+
+{% endblock %}
+

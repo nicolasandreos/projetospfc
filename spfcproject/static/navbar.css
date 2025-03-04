@@ -1,0 +1,54 @@
+#barraNavegacao {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 15px;
+    width: 80%; /* Ajuste a largura para 80% ou o valor desejado */
+    max-width: 1200px; /* Limita a largura máxima */
+    margin: 0 auto; /* Centraliza a navbar na tela */
+    background-color: #580000;
+    position: relative;
+    z-index: 40;
+    padding: 0px;
+    border-radius: 15px; /* Adiciona bordas arredondadas */
+    background-size: cover; /* Garante que a imagem de fundo cubra a área */
+    background-position: center; /* Centraliza a imagem de fundo */
+}
+
+/* Estilização dos links */
+.navbar-links {
+    font-family: Calibri, sans-serif;
+    font-weight: 900;
+    color: white;
+    font-size: 21px; /* Tamanho da fonte que você já usou */
+    letter-spacing: 0px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover: Adiciona um fundo branco e mantém a borda arredondada */
+.navbar-links:hover {
+    background: white;
+    color: #580000; /* Deixa o texto no tom do fundo original */
+    text-decoration: none;
+    padding: 8px 16px; /* Manter o padding reduzido */
+    border-radius: 10px;
+    font-size: 23px;
+}
+
+/* Responsividade: Ajusta a navbar em telas menores */
+@media (max-width: 768px) {
+    #barraNavegacao {
+        width: 100%; /* Em telas menores, a navbar ocupa 100% da largura */
+        padding: 5px 0; /* Diminui o padding em telas menores */
+    }
+
+    .navbar-links {
+        font-size: 16px; /* Diminui o tamanho da fonte */
+        padding: 6px 12px; /* Ajusta o padding dos links */
+    }
+}
+
+/* Garantir que não haja espaçamento branco no final da página */
+body {
+    overflow-x: hidden; /* Previne o excesso de largura no layout */
+}
+
+

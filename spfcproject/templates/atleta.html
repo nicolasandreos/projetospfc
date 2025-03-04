@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+
+{% block body %}
+<body>
+<div class="container d-flex justify-content-center align-items-center mt-4">
+    <div class="w-75 p-4 shadow bg-light" style="border-radius: 35px">  <!-- Define a largura máxima dos inputs e adiciona estilo -->
+        <div class="d-flex align-items-center justify-content-center gap-2">
+            <img src="{{ url_for('static', filename='fotos_gerais/madecotia.jpg') }}" alt="Logo" class="logo">
+            <h1 class="m-0">ALTERAR DADOS CADASTRAIS</h1>
+        </div>
+        <div style="width: 100%; height: 3px; background-color: #6c0408;" class="mb-3"></div>
+
+        <form method="POST" action="">
+            {{ form_edicao_atleta.csrf_token }}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {% if form_edicao_atleta.nome_completo.errors %}
+                            {{ form_edicao_atleta.nome_completo(class="form-control is-invalid") }}
+                            <div class="invalid-feedback mb-4">
+                                {% for erro in form_edicao_atleta.nome_completo.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="input-group mb-4 mt-4">
+                                {{ form_edicao_atleta.nome_completo(class="form-control", placeholder='Nome Completo do Atleta') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div> <!-- Fecha corretamente o col-md-6 -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {% if form_edicao_atleta.data_nascimento.errors %}
+                            {{ form_edicao_atleta.data_nascimento(class="form-control is-invalid") }}
+                            <div class="invalid-feedback mb-4">
+                                {% for erro in form_edicao_atleta.data_nascimento.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="input-group mb-4 mt-4">
+                                {{ form_edicao_atleta.data_nascimento(class="form-control") }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div> <!-- Fecha corretamente o col-md-6 -->
+            </div> <!-- Fecha corretamente a row -->
+
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.sexo.errors %}
+                                {{ form_edicao_atleta.sexo(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.sexo.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.sexo(class="form-control") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div> <!-- Fecha corretamente o col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.nacionalidade.errors %}
+                                {{ form_edicao_atleta.nacionalidade(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.nacionalidade.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.nacionalidade(class="form-control", placeholder="Nacionalidade") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.cpf.errors %}
+                                {{ form_edicao_atleta.cpf(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.cpf.errors %}
+                                        {{ erro }}
+                                     {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.cpf(class="form-control", placeholder="CPF (Sem Digitos)") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.rg.errors %}
+                                {{ form_edicao_atleta.rg(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.rg.errors %}
+                                        {{ erro }}
+                                     {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.rg(class="form-control", placeholder="RG (Sem Digitos)") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.naturalidade.errors %}
+                                {{ form_edicao_atleta.naturalidade(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.naturalidade.errors %}
+                                        {{ erro }}
+                                     {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.naturalidade(class="form-control", placeholder="Naturalidade") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.endereco.errors %}
+                                {{ form_edicao_atleta.endereco(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.endereco.errors %}
+                                        {{ erro }}
+                                     {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.endereco(class="form-control", placeholder="Endereço Completo") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                     </div>
+                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.ddd.errors %}
+                                {{ form_edicao_atleta.ddd(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.ddd.errors %}
+                                        {{ erro }}
+                                     {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.ddd(class="form-control", placeholder="DDD") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% if form_edicao_atleta.telefone.errors %}
+                                {{ form_edicao_atleta.telefone(class="form-control is-invalid") }}
+                                <div class="invalid-feedback mb-4">
+                                    {% for erro in form_edicao_atleta.telefone.errors %}
+                                        {{ erro }}
+                                     {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="input-group mb-4">
+                                    {{ form_edicao_atleta.telefone(class="form-control", placeholder="Telefone") }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                 </div>
+
+                <div class="form-group">
+                    {% if form_edicao_atleta.email.errors %}
+                        {{ form_edicao_atleta.email(class="form-control is-invalid") }}
+                        <div class="invalid-feedback mb-4">
+                            {% for erro in form_edicao_atleta.email.errors %}
+                                {{ erro }}
+                             {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="input-group mb-4">
+                            {{ form_edicao_atleta.email(class="form-control", placeholder="Email") }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4 text-center">
+                    <h4>Menor de idade</h4>
+                </div>
+
+                <div class="form-group">
+                    {% if form_edicao_atleta.nome_responsavel.errors %}
+                        {{ form_edicao_atleta.nome_responsavel(class="form-control is-invalid") }}
+                        <div class="invalid-feedback mb-4">
+                            {% for erro in form_edicao_atleta.nome_responsavel.errors %}
+                                {{ erro }}
+                             {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="input-group mb-4 mt-4">
+                            {{ form_edicao_atleta.nome_responsavel(class="form-control", placeholder="Nome Completo do Responsável") }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {% if form_edicao_atleta.ddd_responsavel.errors %}
+                        {{ form_edicao_atleta.ddd_responsavel(class="form-control is-invalid") }}
+                        <div class="invalid-feedback mb-4">
+                            {% for erro in form_edicao_atleta.ddd_responsavel.errors %}
+                                {{ erro }}
+                             {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="input-group mb-4">
+                            {{ form_edicao_atleta.ddd_responsavel(class="form-control", placeholder="DDD Responsável") }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {% if form_edicao_atleta.telefone_responsavel.errors %}
+                        {{ form_edicao_atleta.telefone_responsavel(class="form-control is-invalid") }}
+                        <div class="invalid-feedback mb-4">
+                            {% for erro in form_edicao_atleta.telefone_responsavel.errors %}
+                                {{ erro }}
+                             {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="input-group mb-4">
+                            {{ form_edicao_atleta.telefone_responsavel(class="form-control", placeholder="Telefone Reponsável") }}
+                        </div>
+                    {% endif %}
+                </div>
+            <div class="text-center mt-3 d-flex gap-2">
+                {{ form_edicao_atleta.botao_editar_atleta(class="btn btn-custom w-100") }}
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+{% endblock %}

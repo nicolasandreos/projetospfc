@@ -1,0 +1,37 @@
+<head>
+  <link rel="stylesheet" href="static/navbar.css">
+</head>
+
+{% if current_user.is_authenticated %}
+  <header id="barraNavegacao">
+
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Botão para abrir o menu em telas pequenas -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Aqui está o menu que será colapsável em telas menores -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="row w-100 text-center">
+            <div class="col-md-3">
+              <a class="navbar-links d-block" href="{{ url_for('home') }}">Home</a>
+            </div>
+            <div class="col-md-3">
+              <a class="navbar-links d-block" href="{{ url_for('exibir_atletas') }}">Lista de Atletas</a>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-center">
+              <a class="navbar-links d-block" href="{{ url_for('perfil') }}">Olá {{ current_user.username.split()[0].title() }}</a>
+            </div>
+            <div class="col-md-3">
+              <a class="navbar-links d-block" href="{{ url_for('sair') }}">Sair</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+{% endif %}
